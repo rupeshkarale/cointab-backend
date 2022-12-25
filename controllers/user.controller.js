@@ -47,5 +47,17 @@ userRouter.get('/page', async (req, res) => {
     console.log(result.length)
 })
 
+userRouter.get('/count', async (req, res) => {
+    try {
+        let count = await User.count({})
+        res.send({
+            count: count
+        }).status(201)
+    } catch (error) {
+        res.send(error)
+    }
+
+})
+
 
 module.exports = userRouter;
